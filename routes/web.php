@@ -2,12 +2,13 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
+//PostController 
+Route::resource('/posts',PostController::class);
 
 
 //PageController 
@@ -18,7 +19,6 @@ Route::get('/postdetail',[PageController::class, 'postdetail'])->name('postdetai
 
 //AdminController 
 Route::get('/admin/index',[AdminController::class, 'index'])->name('admin.index');
-
 
 
 
