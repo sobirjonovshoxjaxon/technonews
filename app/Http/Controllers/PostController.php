@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -11,6 +12,12 @@ class PostController extends Controller
      */
     public function index()
     {
+        // $posts = Post::all();
+        // $posts = Post::where('title', 'Sobirjonov Jasurbek')->get();
+        // $posts = Post::where('title', 'Sobirjonov Jasurbek')->first();
+        $posts = Post::find(2);
+        dd($posts);
+
         return view('admin.posts.index');
     }
 
