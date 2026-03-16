@@ -12,13 +12,65 @@ class PostController extends Controller
      */
     public function index()
     {
+        // 1-qadam
         // $posts = Post::all();
         // $posts = Post::where('title', 'Sobirjonov Jasurbek')->get();
         // $posts = Post::where('title', 'Sobirjonov Jasurbek')->first();
-        $posts = Post::find(2);
-        dd($posts);
+        // $posts = Post::find(2);
+        // dd($posts);
 
-        return view('admin.posts.index');
+        // 2-qadam  This is how to create new information 
+        // $newPost = new Post;
+        // $newPost->title = 'newPost 2';
+        // $newPost->image = 'devor.png';
+        // $newPost->content = 'new Post content Sobirjonov Shoxjaxon Whats up?';
+        // $newPost->user_id = 1;
+        // $newPost->save();
+
+        // 3-qadam  This is how to create new information in basic way
+        // $newPost = Post::create([
+        //     'title' => 'This was created by protected',
+        //     'image' => 'youtube.jpg',
+        //     'content'=>'lorem Ipsum My name is Mr Johnson today I am going to say that we need to discuss about our topic',
+        //     'user_id' => 1,
+        // ]);
+
+
+        // 4th step This is how to update information 
+        // $post = Post::find(4);
+        // $post->title = 'I updated this title';
+        // $post->save(); 
+
+        // 5th step This is how to update information in basic way 
+        // $post = Post::find(4)->update([
+
+        //     'title' => 'We updated this title on the other hand'
+        // ]);
+
+        // 6th step isDirty 
+        // $post = Post::find(4);
+        // $post->title = 'Sobirjonov Shoxjaxon';
+        // $post->save();
+
+        // if($post->wasChanged('title')){
+
+        //     return "It is dirty";
+        // }else{
+        //     return "It was not changed";
+        // }
+        // $result = $post->isDirty();
+        // $result = $post->isClean();
+
+        // return $result;
+
+
+        // 7th step Delete information 
+        $post = Post::find(2);
+        $post->delete();
+
+        return 'deleted';
+
+        // return view('admin.posts.index');
     }
 
     /**
