@@ -14,9 +14,11 @@ class PostController extends Controller
     {
         // 1-qadam
         // $posts = Post::all();
-        // $posts = Post::where('title', 'Sobirjonov Jasurbek')->get();
-        // $posts = Post::where('title', 'Sobirjonov Jasurbek')->first();
-        // $posts = Post::find(2);
+        // $posts = Post::where('title', 'This was created by protected')->get();
+        // $posts = Post::where('title', 'This was created by protected')->first();
+        // $posts->title = 'Sobirjonov Shoxjaxon';
+        // $posts->save();
+        // $posts = Post::find(1);
         // dd($posts);
 
         // 2-qadam  This is how to create new information 
@@ -34,6 +36,8 @@ class PostController extends Controller
         //     'content'=>'lorem Ipsum My name is Mr Johnson today I am going to say that we need to discuss about our topic',
         //     'user_id' => 1,
         // ]);
+        // dd(($newPost));
+        
 
 
         // 4th step This is how to update information 
@@ -65,12 +69,22 @@ class PostController extends Controller
 
 
         // 7th step Delete information 
-        $post = Post::find(2);
-        $post->delete();
+        // $post = Post::find(2);
+        // $post->delete();
 
-        return 'deleted';
+        // return 'deleted';
 
         // return view('admin.posts.index');
+
+        // Post::forceDestroy(2); // This method delete from deleted_at too
+        // Post::destroy(3);
+        // return 'Soft Deleted';
+
+        // $posts = Post::all();
+        $posts = Post::withTrashed()->where('id',3)->restore(); // It is restore this code from deleted_at table
+        
+        $post = Post::all();
+        dd($post);
     }
 
     /**
