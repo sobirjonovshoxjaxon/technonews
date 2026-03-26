@@ -29,10 +29,10 @@ class AuthenticatedSessionController extends Controller
 
         $usertype = Auth::user()->user_type;
 
-        if($usertype == 'admin'){
+        if($usertype === 'admin'){
 
             return to_route('admin.index');
-        }elseif($usertype == 'user'){
+        }elseif($usertype === 'user'){
 
             return to_route('index.page');
         }else{

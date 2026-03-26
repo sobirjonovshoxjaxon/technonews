@@ -11,27 +11,35 @@
                     <div class="table-responsive">
                       <table class="table table-bordered table-md">
                         <tr>
-                          <th>T/R</th>
+                          <th>Id</th>
                           <th>Title</th>
                           <th>Image</th>
                           <th>Content</th>
+                          <th>User_id</th>
                           <th colspan="3">Action</th>
                         </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>Irwansyah Saputra title</td>
-                          <td>This is for image place</td>
-                          <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure ut provident, autem numquam aspernatur doloremque necessitatibus nisi, quibusdam placeat quae magnam, quisquam quo exercitationem quam.</td>
-                          <td>
-                            <a href="" class="btn btn-primary">Show</a>
-                          </td>
-                          <td>
-                            <a href="" class="btn btn-warning">Edit</a>
-                          </td>
-                          <td>
-                            <a href="" class="btn btn-danger">Delete</a>
-                          </td>
-                        </tr>
+
+                        @foreach ($posts as $post)
+                          <tr>
+                            <td>{{ $post->id }}</td>
+                            <td>{{ $post->title }}</td>
+                            <td>{{ $post->image }}</td>
+                            <td>{{ $post->content }}</td>
+                            <td>{{ $post->user_id }}</td>
+                            <td>
+                              <a href="{{ route('posts.show',['post' => $post->id])}}" class="btn btn-primary">Show</a>
+                            </td>
+                            <td>
+                              <a href="" class="btn btn-warning">Edit</a>
+                            </td>
+                            <td>
+                              <a href="" class="btn btn-danger">Delete</a>
+                            </td>
+                          </tr>
+                        @endforeach
+                       
+
+
                       </table>
                     </div>
                   </div>
