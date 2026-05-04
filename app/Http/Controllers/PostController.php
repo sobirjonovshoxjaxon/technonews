@@ -31,7 +31,21 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        dd($request->all());
+        if($request->hasFile('image')){
+
+            $fileName = $request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->storeAs('post-photos',$fileName);
+        }
+       
+
+        $post = Post::create([
+
+            'title' => $request->title,
+            'content' => $request->content,
+            'image' => $path,
+        ]);
+
+        return to_route('posts.index');
     }
 
     /**
@@ -45,17 +59,24 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit',compact('post'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PostRequest $request, Post $post)
     {
-        //
+       $post->udpate([
+
+        'title' => $request->title,
+        'image' => $path ?? $post->image,
+        'content' => $request->content,
+       ]);
+
+       return to_route('posts.index');
     }
 
     /**

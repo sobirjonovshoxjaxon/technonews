@@ -14,7 +14,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Title</label>
-                                <input type="text" class="form-control" name="title">
+                                <input type="text" class="form-control" name="title" value="{{ old('title')}}">
                                 @error('title')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -22,7 +22,7 @@
 
                             <div class="form-group">
                                 <label>Image</label>
-                                <input type="file" class="form-control" name="image">
+                                <input type="file" class="form-control" name="image" value="{{ old('image')}}">
                                 @error('image')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -31,7 +31,7 @@
 
                             <div class="form-group">
                                 <label>Content</label>
-                                <textarea class="form-control" name="content"></textarea>
+                                <textarea class="form-control" name="content">{{ old('content')}}</textarea>
                                 @error('content')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror

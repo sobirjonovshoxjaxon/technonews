@@ -5,8 +5,8 @@
 
         <h5><b>Id: </b>{{ $post->id }}</h5>
         <h5><b>Title: </b>{{ $post->title }}</h5>
-        <h5><b>Image: </b>{{ $post->image }}</h5>
-        <img src="" alt="">
+        <h5><b>Image: </b></h5>
+        <img width="300" src="{{ asset('storage/'.$post->image)}}" alt="">
 
         <h5><b>Content: </b>{{ $post->content }}</h5>
         <h5><b>User_id: </b>{{ $post->user_id }}</h5>

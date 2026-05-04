@@ -23,14 +23,16 @@
                           <tr>
                             <td>{{ $post->id }}</td>
                             <td>{{ $post->title }}</td>
-                            <td>{{ $post->image }}</td>
+                            <td>
+                              <img width="100" src="{{ asset('storage/'.$post->image)}}" alt="">
+                            </td>
                             <td>{{ $post->content }}</td>
                             <td>{{ $post->user_id }}</td>
                             <td>
                               <a href="{{ route('posts.show',['post' => $post->id])}}" class="btn btn-primary">Show</a>
                             </td>
                             <td>
-                              <a href="" class="btn btn-warning">Edit</a>
+                              <a href="{{ route('posts.edit', $post->id)}}" class="btn btn-warning">Edit</a>
                             </td>
                             <td>
                               <a href="" class="btn btn-danger">Delete</a>
