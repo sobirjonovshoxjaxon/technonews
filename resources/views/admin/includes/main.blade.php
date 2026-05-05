@@ -47,7 +47,7 @@
 
             <li class="dropdown">
 
-              <a href="auth-login.html" class="dropdown-item has-icon text-danger"> 
+              <a href="{{ route('logout.page')}}" class="dropdown-item has-icon text-danger"> 
                 <i style="font-size: 30px;" class="fas fa-sign-out-alt"></i>
               </a>
 

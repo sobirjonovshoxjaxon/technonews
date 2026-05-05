@@ -15,11 +15,11 @@ Route::resource('/posts',PostController::class);
 Route::get('/',[PageController::class, 'index'])->name('index.page');
 Route::get('/category/{slug}',[PageController::class, 'categoryPost'])->name('category.post');
 Route::get('/contact',[PageController::class, 'contact'])->name('contact.page');
-Route::get('/postdetail',[PageController::class, 'postdetail'])->name('postdetail.page');
+Route::get('/postdetail/{slug}',[PageController::class, 'postdetail'])->name('postdetail.page');
 
 //AdminController 
 Route::get('/admin/index',[AdminController::class, 'index'])->name('admin.index');
-
+Route::get('/logout', [AdminController::class, 'logout'])->name('logout.page');
 
 
 //Dashboard 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Storage;
 
 
 class PostController extends Controller
@@ -14,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(8);
         return view('admin.posts.index',compact('posts'));
     }
 
@@ -69,12 +70,22 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
-       $post->udpate([
+        if($request->hasFile('image')){
 
-        'title' => $request->title,
-        'image' => $path ?? $post->image,
-        'content' => $request->content,
-       ]);
+            if(isset($post->image)){
+
+                Storage::delete($post->image);
+            }
+
+            $fileName = $request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->storeAs('post-photos', $fileName);
+        }
+        
+        $post->update([
+            'title' => $request->title,
+            'image' => $path ?? $post->image,
+            'content' => $request->content,
+        ]);
 
        return to_route('posts.index');
     }
@@ -82,8 +93,14 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Post $post)
     {
-        //
+        if(isset($post->image)){
+
+            Storage::delete($post->image);
+        }
+
+        $post->delete();
+        return back();
     }
 }
