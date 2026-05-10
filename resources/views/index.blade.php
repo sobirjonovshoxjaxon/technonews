@@ -463,7 +463,7 @@
                                                 <span>January 01, 2045</span>
                                             </div>
                                             <a class="h4" href="{{ route('postdetail.page',$post->id)}}">{{ $post->title }}</a>
-                                            <p class="m-0">{{ $post->content }}</p>
+                                            <p class="m-0">{{ Str::limit($post->content,100) }}</p>
                                         </div>
                                     </div>
                                 </div>

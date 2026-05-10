@@ -18,7 +18,6 @@ return new class extends Migration
             $table->text('content');
             $table->integer('user_id')->default(1);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

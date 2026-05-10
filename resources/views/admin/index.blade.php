@@ -2,6 +2,6 @@
 @section('content')
           
          
-    <h1>Hello AdminPanel</h1>
+    <h1>Hello {{ $user->name }}!</h1>
          
 @endsection

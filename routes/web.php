@@ -4,11 +4,15 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
 //PostController 
 Route::resource('/posts',PostController::class);
+
+//UserController 
+Route::resource('/users',UserController::class);
 
 
 //PageController 
